@@ -1,0 +1,380 @@
+/* Reset y configuraciones generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding-bottom: 70px; /* Espacio para el footer fijo */
+}
+
+/* Header */
+header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.2em 0;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Navegación con iconos */
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 0.8em 0;
+    margin: 0;
+    list-style-type: none;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 998;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+nav ul li {
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    font-size: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li:hover {
+    color: #2980b9;
+}
+
+/* Contenido principal */
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 1em;
+}
+
+/* Resumen de ingresos/gastos */
+#summary {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+}
+
+#summary div {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+#summary span {
+    display: block;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-top: 0.3em;
+}
+
+/* Lista de transacciones */
+#transaction-list h2 {
+    margin-bottom: 1em;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+ul#transactions {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul#transactions li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75em 0.5em;
+    border-bottom: 1px solid #eee;
+    transition: background 0.3s ease;
+}
+
+ul#transactions li:hover {
+    background-color: #f1f1f1;
+}
+
+.income {
+    border-left: 5px solid #27ae60;
+}
+
+.expense {
+    border-left: 5px solid #e74c3c;
+}
+
+/* Botón de eliminar */
+ul#transactions li button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+ul#transactions li button:hover {
+    background-color: #c0392b;
+}
+
+/* Footer - botones de navegación */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #2c3e50;
+    padding: 0.75rem 0;
+    z-index: 1000;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+}
+
+footer button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.6rem 0.8rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+footer button:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+/* Modal del formulario */
+#transaction-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    z-index: 1001;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -45%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+#transaction-form h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+    color: #2c3e50;
+}
+
+#transaction-form input,
+#transaction-form select,
+#transaction-form button[type="submit"],
+#transaction-form button[type="button"] {
+    width: 100%;
+    margin: 0.6em 0;
+    padding: 0.8em;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+}
+
+#transaction-form input:focus,
+#transaction-form select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+#transaction-form button[type="submit"] {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#transaction-form button[type="submit"]:hover {
+    background-color: #219150;
+}
+
+#transaction-form button[type="button"] {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #summary {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        flex: 0 0 30%;
+        font-size: 0.7rem;
+        padding: 0.5em 0;
+    }
+
+    footer button {
+        font-size: 1rem;
+        height: 35px;
+        width: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    #summary span {
+        font-size: 1rem;
+    }
+
+    footer button {
+        height: 30px;
+        width: 30px;
+        font-size: 0.9rem;
+    }
+
+    nav ul li {
+        flex: 0 0 40%;
+    }
+}
+/* Footer - Botones alineados con el "+" centrado */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #2c3e50;
+    padding: 0.75rem 1rem;
+    z-index: 1000;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    max-width: 900px;
+    margin: auto;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+footer button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.6rem 0.8rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+footer button:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+/* Darle un poco más de tamaño al botón '+' para destacarlo */
+footer button#add-transaction {
+    background-color: #27ae60;
+    font-size: 2rem;
+    height: 60px;
+    width: 60px;
+    margin: 0 -8px; /* Ajuste visual */
+    z-index: 1001;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer button#add-transaction:hover {
+    background-color: #219150;
+}
+
+/* Responsive: ajuste en pantallas pequeñas */
+@media (max-width: 500px) {
+    footer button#add-transaction {
+        height: 50px;
+        width: 50px;
+        font-size: 1.6rem;
+    }
+
+    footer button {
+        height: 40px;
+        width: 40px;
+        font-size: 1rem;
+    }
+}
+.view {
+    display: none;
+    padding: 1em;
+}
+
+.view.active {
+    display: block;
+}
+
+/* Puedes personalizar cada vista */
+#view-diario h2,
+#view-calendario h2,
+#view-semanal h2,
+#view-mensual h2,
+#view-resumen h2,
+#view-reporte h2 {
+    color: #2c3e50;
+}

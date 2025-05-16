@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Control de Gastos - Calendario</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css ">
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="calendario.css">
+</head>
+<body>
+
+    <!-- Encabezado --> 
+    <header>
+        <div class="header-container">
+            <i class="fas fa-calendar-alt"></i>
+            <h1>Control de Gastos - Calendario</h1>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <section class="date-filter">
+            <label for="monthPicker"><i class="fas fa-calendar-alt"></i> Selecciona un mes:</label>
+            <input type="text" id="monthPicker" placeholder="Selecciona un mes">
+        </section>
+
+        <!-- Vista del calendario -->
+        <section id="calendar-view" class="calendar-grid"></section>
+
+        <!-- Transacciones del día seleccionado -->
+        <section class="transaction-list">
+            <h2>Transacciones del día</h2>
+            <ul id="transactions-calendar">
+                <li><em>Selecciona un día del calendario.</em></li>
+            </ul>
+        </section>
+
+        <!-- Resumen del día seleccionado -->
+        <section class="summary">
+            <div class="summary-item income">
+                Ingresos: <span id="income-calendar">$0.00</span>
+            </div>
+            <div class="summary-item expense">
+                Gastos: <span id="expenses-calendar">$0.00</span>
+            </div>
+            <div class="summary-item total">
+                Total: <span id="total-calendar">$0.00</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botón flotante para agregar transacción -->
+    <button id="add-transaction" title="Agregar transacción">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Modal para agregar transacción -->
+    <div id="overlay"></div>
+    <form id="transaction-form">
+        <h3>Nueva Transacción</h3>
+        <input type="text" name="description" placeholder="Descripción" required>
+        <input type="number" step="0.01" name="amount" placeholder="Monto" required>
+        <select name="type" required>
+            <option value="">Selecciona tipo</option>
+            <option value="income">Ingreso</option>
+            <option value="expense">Gasto</option>
+        </select>
+        <button type="submit">Agregar</button>
+        <button type="button" onclick="closeForm()">Cancelar</button>
+    </form>
+
+    <!-- Scripts -->
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js "></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js "></script>
+
+    <!-- Configuración de Firebase -->
+    <script src="firebase-config.js"></script>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr "></script>
+
+    <!-- Lógica del calendario -->
+    <script src="calendario.js"></script>
+</body>
+</html>

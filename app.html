@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Gastos</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="app.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <h1>Control de Gastos</h1>
+    </header>
+
+    <!-- Contenido principal -->
+    <main id="app">
+
+        <!-- Diario -->
+        <section id="view-diario" class="view active">
+            <h2>Diario</h2>
+            <p>Aquí se muestran las transacciones del día.</p>
+            <ul id="transactions-diario"></ul>
+        </section>
+
+        <!-- Calendario -->
+        <section id="view-calendario" class="view">
+            <h2>Calendario</h2>
+            <p>Selecciona una fecha para ver tus transacciones.</p>
+            <input type="date" id="calendar-input">
+            <div id="calendar-output"></div>
+        </section>
+
+        <!-- Semanal -->
+        <section id="view-semanal" class="view">
+            <h2>Semanal</h2>
+            <p>Aquí se muestra un resumen semanal de tus gastos e ingresos.</p>
+            <div id="weekly-summary"></div>
+        </section>
+
+        <!-- Mensual -->
+        <section id="view-mensual" class="view">
+            <h2>Mensual</h2>
+            <p>Resumen mensual de tus transacciones.</p>
+            <div id="monthly-summary"></div>
+        </section>
+
+        <!-- Resumen General -->
+        <section id="view-resumen" class="view">
+            <h2>Resumen General</h2>
+            <p>Estadísticas generales de tus finanzas.</p>
+            <div id="general-summary"></div>
+        </section>
+
+        <!-- Exportar / Reporte -->
+        <section id="view-reporte" class="view">
+            <h2>Exportar Datos</h2>
+            <p>Descarga tus transacciones como CSV o imprime un informe.</p>
+            <button id="export-csv">Exportar a CSV</button>
+        </section>
+    </main>
+
+    <!-- Modal para agregar transacción -->
+    <div id="overlay"></div>
+    <form id="transaction-form">
+        <h3>Nueva Transacción</h3>
+        <input type="text" name="description" placeholder="Descripción" required>
+        <input type="number" step="0.01" name="amount" placeholder="Monto" required>
+        <select name="type" required>
+            <option value="">Selecciona tipo</option>
+            <option value="income">Ingreso</option>
+            <option value="expense">Gasto</option>
+        </select>
+        <button type="submit">Agregar</button>
+        <button type="button" onclick="closeForm()">Cancelar</button>
+    </form>
+
+    <!-- Footer con botones de navegación -->
+    <footer>
+        <div>
+            <button id="btn-diario" title="Diario"><i class="fas fa-calendar-day"></i></button>
+            <button id="btn-calendario" title="Calendario"><i class="fas fa-calendar-alt"></i></button>
+            <button id="btn-semanal" title="Semanal"><i class="fas fa-calendar-week"></i></button>
+            <button id="add-transaction" title="Agregar"><i class="fas fa-plus"></i></button>
+            <button id="btn-metas" title="Metas"><i class="fas fa-piggy-bank"></i></button>
+            <button id="btn-resumen" title="Resumen"><i class="fas fa-chart-line"></i></button>
+            <button id="btn-reporte" title="Exportar"><i class="fas fa-file-export"></i></button>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js "></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js "></script>
+
+    <!-- Configuración de Firebase -->
+    <script src="firebase-config.js"></script>
+
+    <!-- Lógica principal -->
+    <script src="app.js"></script>
+</body>
+</html>

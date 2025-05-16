@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Gastos - Resumen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
+    <link rel="stylesheet" href="resumen.css">
+
+    <!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1><i class="fas fa-chart-line"></i> Resumen Financiero</h1>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Estadísticas clave -->
+        <section class="stats-grid">
+            <div class="stat-card income">
+                <h3 id="total-income">$0.00</h3>
+                <p>Ingresos Totales</p>
+            </div>
+            <div class="stat-card expense">
+                <h3 id="total-expense">$0.00</h3>
+                <p>Gastos Totales</p>
+            </div>
+            <div class="stat-card total">
+                <h3 id="total-balance">$0.00</h3>
+                <p>Balance Total</p>
+            </div>
+            <div class="stat-card average">
+                <h3 id="avg-daily">$0.00</h3>
+                <p>Promedio Diario</p>
+            </div>
+        </section>
+
+        <!-- Gráfico de torta: Ingresos vs Gastos -->
+        <canvas id="pieChart" width="400" height="200"></canvas>
+
+        <!-- Gráfico de barras: Transacciones por día -->
+        <canvas id="barChart" width="400" height="150"></canvas>
+
+        <!-- Opcional: Detalles adicionales -->
+        <section class="summary-section">
+            <h2>Detalles Adicionales</h2>
+            <ul id="transaction-summary-list">
+                <li>No hay transacciones registradas.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Script -->
+    
+<script src="resumen.js"></script>
+
+</body>
+</html>

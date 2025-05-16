@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Gastos - Diario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
+    <link rel="stylesheet" href="diario.css">
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="header-container">
+            <i class="fas fa-calendar-day"></i>
+            <h1>Control de Gastos - Diario</h1>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <section class="date-filter">
+            <label for="daily-date">Selecciona una fecha:</label>
+            <input type="date" id="daily-date" name="daily-date">
+        </section>
+
+        <!-- Resumen del día -->
+        <section class="summary">
+            <div class="summary-item income">
+                <i class="fas fa-arrow-up"></i> Ingresos del día: <span id="income-diario">$0.00</span>
+            </div>
+            <div class="summary-item expense">
+                <i class="fas fa-arrow-down"></i> Gastos del día: <span id="expenses-diario">$0.00</span>
+            </div>
+            <div class="summary-item total">
+                <i class="fas fa-balance-scale"></i> Total: <span id="total-diario">$0.00</span>
+            </div>
+        </section>
+
+        <!-- Lista de transacciones -->
+        <section class="transaction-list">
+            <h2>Transacciones de hoy</h2>
+            <ul id="transactions-diario">
+                <li><em>No hay transacciones registradas.</em></li>
+            </ul>
+        </section>
+    </main>
+
+
+        <!-- Botón para agregar transacción -->
+        <button id="add-transaction" title="Agregar transacción">
+            <i class="fas fa-plus"></i>
+        </button>
+
+    <!-- Modal para agregar transacción -->
+    <div id="overlay"></div>
+    <form id="transaction-form">
+        <h3>Nueva Transacción</h3>
+        <input type="text" name="description" placeholder="Descripción" required>
+        <input type="number" step="0.01" name="amount" placeholder="Monto" required>
+        <select name="type" required>
+            <option value="">Selecciona tipo</option>
+            <option value="income">Ingreso</option>
+            <option value="expense">Gasto</option>
+        </select>
+        <button type="submit">Agregar</button>
+        <button type="button" onclick="closeForm()">Cancelar</button>
+    </form>
+
+    <script src="diario.js"></script>
+</body>
+</html>
